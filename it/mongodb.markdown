@@ -43,7 +43,7 @@ Il fenomeno è evidente nell'affermazione delle tecnologie NoSQL a scapito dei b
 
 Anche se sembra che queste transizioni avvengano nel corso di una notte, la realta è che possono passare anni prima che una nuova tecnologia divenga pratica comune. L'entusiasmo iniziale è guidato da un gruppo relativamente piccolo di sviluppatori e aziende. I prodotti migliorano con l'esperienza e, quando ci si rende conto che una tecnologia è destinata a rimanere, altri cominciano a sperimentarla. Ciò è particolarmente vero nel caso NoSQL poiché spesso queste soluzioni non vengono progettate come alternative a modelli di storage più tradizionali, ma intendono piuttosto far fronte a nuove necessità.
 
-Detto questo, prima di tutto dobbamo capirci su cosa si intenda per NoSQL. E' un termine vago, che ha significati diversi a seconda di chi lo usa. Personalmente lo intendo in senso molto ampio, per far riferimento a un sistema che svolge un ruolo nel salvataggio dei dati. In altre parole per me NoSQL è la convinzione che lo strato di persistenza non è necessariamente responsabilità di un solo sistema. Laddove storicamente i fornitori di database relazionali hanno sempre tentanto di posizionare i loro software come soluzione universale per qualunque problema, NoSQL tende a individuare piccole unità di responsabilità per ognuna delle quali scegliere lo strumento ideale. Quindi uno stack NoSQL potrebbe contemplare un database relazionale, MySQL per esempio, Redis per ricerche veloci e Hadoop per le elaborazioni dati intensive. In parole povere NoSQL è essere aperti e coscienti dell'esistenza di modelli e strumenti alternativi per la gestione dei dati. 
+Detto questo, prima di tutto dobbiamo capirci su cosa si intenda per NoSQL. E' un termine vago, che ha significati diversi a seconda di chi lo usa. Personalmente lo intendo in senso molto ampio, per far riferimento a un sistema che svolge un ruolo nel salvataggio dei dati. In altre parole per me NoSQL è la convinzione che lo strato di persistenza non è necessariamente responsabilità di un solo sistema. Laddove storicamente i fornitori di database relazionali hanno sempre tentanto di posizionare i loro software come soluzione universale per qualunque problema, NoSQL tende a individuare piccole unità di responsabilità per ognuna delle quali scegliere lo strumento ideale. Quindi uno stack NoSQL potrebbe contemplare un database relazionale, MySQL per esempio, Redis per ricerche veloci e Hadoop per le elaborazioni dati intensive. In parole povere NoSQL è essere aperti e coscienti dell'esistenza di modelli e strumenti alternativi per la gestione dei dati. 
 
 Vi potreste domandare qual'è il ruolo ricoperto da MongoDB in tutto questo. In quanto database orientato ai documenti Mongo è una soluzione NoSQL piuttosto generalizzata, e in effetti andrebbe visto come una alternativa ai database relazionali. Come i database relazionali anche Mongo potrebbe trarre beneficio dall'abbinamento a soluzioni NoSQL più specializzate. MongoDB ha vantaggi e svantaggi che vedremo nei prossimi capitoli di questo libro.
 
@@ -52,19 +52,19 @@ Avrete notato che in questo libro useremo indifferentemente i termini MongoDB e 
 ## Cominciare ##
 Gran parte di questo libro è dedicata alle funzionalità di base di MongoDB. Per questo motivo ci affideremo alla shell di MongoDB. La shell è preziosa sia per imparare che come strumento di amministrazione, tuttavia il vostro codice applicativo farà uso senz'altro di uno dei driver MongoDB.
 
-Questo ci porta alla prima cosa da conoscere di MongoDB: i driver. Mongo è dotati di un [buon numero di driver ufficiali](http://www.mongodb.org/display/DOCS/Drivers) per i principali linguaggi di programmazione. Possiamo pensare ai driver allo stesso modo di quelli per database relazionali che probabilmente abbiamo usato in passato. La community di sviluppatori ha poi costruito, sulla base di questi driver, una serie di framework e librerie dedicate ai vari linguaggi. Per esempio [NoRM](https://github.com/atheken/NoRM) è una libreria C# che implementa LINQ, mentre [MongoMapper](https://github.com/jnunemaker/mongomapper) è una libreria Ruby compatibile con ActiveRecord. La scelta di programmare coi driver di base piuttosto che con le librerie di più alto livello è libera. Ne faccio cenno perché molte persone che si avvicinano a MongoDB rimangono confuse dall'esistenza di driver ufficiali e di librerie della community - in linea generale i primi si occupano di comunicazione e connettività di base con MongoDB, mentre le seconde implementano caratteristiche specifiche dei linguaggi/framework.
+Questo ci porta alla prima cosa da conoscere di MongoDB: i driver. Mongo è dotato di un [buon numero di driver ufficiali](http://www.mongodb.org/display/DOCS/Drivers) per i principali linguaggi di programmazione. Possiamo pensare ai driver allo stesso modo di quelli per database relazionali che probabilmente abbiamo usato in passato. La community di sviluppatori ha poi costruito, sulla base di questi driver, una serie di framework e librerie dedicate ai vari linguaggi. Per esempio [NoRM](https://github.com/atheken/NoRM) è una libreria C# che implementa LINQ, mentre [MongoMapper](https://github.com/jnunemaker/mongomapper) è una libreria Ruby compatibile con ActiveRecord. La scelta di programmare coi driver di base piuttosto che con le librerie di più alto livello è libera. Ne faccio cenno perché molte persone che si avvicinano a MongoDB rimangono confuse dall'esistenza di driver ufficiali e di librerie della community - in linea generale i primi si occupano di comunicazione e connettività di base con MongoDB, mentre le seconde implementano caratteristiche specifiche dei linguaggi/framework.
 
 Nel corso della lettura del libro vi invito a giocare con MongoDB, sia mettendo in pratica quel che propongo che sperimentando in proprio, rispondendo alle domande che senz'altro sorgeranno spontanee. E' facile cominciare a lavorare con MongoDB, quindi diamoci subito da fare cominciando dalla configurazione di quel che ci serve.
 
 1. Andate alla [pagina di download ufficiale](http://www.mongodb.org/downloads) e scaricate i file binari per il vostro sistema operativo (scegliete la versione stabile raccomandata). Ai fini dello sviluppo potete prelevare indifferentemente la versione a 32-bit o 64-bit.
 
-2. Scompattate l'archvio (non importa la posizione) quindi andate alla cartella `bin`. Non eseguite nulla, ma sappiate che `mongod` è il processo server mentre `mongo` è la shell (il client) - questi sono i due eseguibili coi quali passeremo gran parte del nostro tempo.
+2. Scompattate l'archivio (non importa la posizione) quindi andate alla cartella `bin`. Non eseguite nulla, ma sappiate che `mongod` è il processo server mentre `mongo` è la shell (il client) - questi sono i due eseguibili coi quali passeremo gran parte del nostro tempo.
 
 3. Create un nuovo file di testo nella cartella `bin` e chiamatelo `mongodb.config`.
 
 4. Aggiungete questa riga al vostro mongodb.config: `dbpath=PERCORSO_DOVE_SALVARE_IL_DATABASE`. Ad esempio, su Windows potreste scegliere `dbpath=c:\mongodb\data` mentre su Linux una scelta valida potrebbe essere `dbpath=/etc/mongodb/data`.
 
-5. Assicuratevi che il `dbpath` che scelto esista.
+5. Assicuratevi che il `dbpath` scelto esista.
 
 6. Lanciate mongod con l'opzione `--config /path/al/vostro/mongodb.config`.
 
@@ -79,7 +79,7 @@ Potete lanciare `mongo` (senza la *d*), che connetterà la shell al vostro serve
 \clearpage
 
 ## Capitolo 1 - Le Basi ##
-Cominciamo il nostro viaggio dai meccanismi base di MongoDB. Ovviamente sono fondamentali per capire MongoDB, ma a un livello più generale ci aiuterannoa a rispondere alle nostre domande sul ruolo di MongoDB.
+Cominciamo il nostro viaggio dai meccanismi base di MongoDB. Ovviamente sono fondamentali per capire MongoDB, ma a un livello più generale ci aiuteranno a a rispondere alle nostre domande sul ruolo di MongoDB.
 
 Per cominciare, ci sono sei semplici concetti che dobbiamo comprendere.
 
@@ -179,7 +179,7 @@ Non abbiamo ancora conosciuto il comando `update` né abbiamo visto le cose più
 \clearpage
 
 ## Capitolo 2 - Gli Aggiornamenti ##
-Nel primo capitolo abbiamo introdotto tre delle quattro operazioni CRUD (create, read, update, delete). Questo capitolo è dedicato all'operazione di cui non abbiamo ancora parlato: `update`. Quest'ultima riserva qualche sorpresa, e per questo motivo le dedichiamo un intero capitolo.
+Nel primo capitolo abbiamo introdotto tre delle quattro operazioni CRUD (create, read, update, delete). Questo capitolo è dedicato all'operazione di cui non abbiamo ancora parlato: `update`. Quest'ultima riserva qualche sorpresa e, per questo motivo, le dedichiamo un intero capitolo.
 
 ### Update: Replace vs $set ###
 Nella sua forma più semplice `update` richiede due argomenti: il selettore da usare (where) e il valore del campo da aggiornare. Se Roooooodles avesse guadagnato qualche chilo, potremmo fare:
@@ -218,7 +218,7 @@ La sezione [Updating](http://www.mongodb.org/display/DOCS/Updating) del sito di 
 ### Upserts ###
 Una delle sorprese più piacevoli che `update` ci riserva è senz'altro il supporto per gli `upsert`. Se `upsert` trova il documento cercato lo aggiorna, altrimenti lo crea. Gli upsert sono utili in diverse situazioni, ve ne renderete conto non appena vi ci imbatterete. Per attivare gli upsert impostiamo un terzo parametro a `true`.
 
-Un esempio banale è quello di contantore di visite ad un sito web. Se volessimo gestire un contatore in tempo reale dovremmo verificare l'esistenza del record per la pagina attuale, quindi decidere per l'inserimento o l'aggiornamento. Poiché omettiamo il terzo parametro (oppure se lo impostiamo a false) l'esecuzione del comando seguente non ottiene risultati:
+Un esempio banale è quello di contatore di visite ad un sito web. Se volessimo gestire un contatore in tempo reale dovremmo verificare l'esistenza del record per la pagina attuale, quindi decidere per l'inserimento o l'aggiornamento. Poiché omettiamo il terzo parametro (oppure se lo impostiamo a false) l'esecuzione del comando seguente non ottiene risultati:
 
 	db.hits.update({page: 'unicorns'}, {$inc: {hits: 1}});
 	db.hits.find();
@@ -265,7 +265,7 @@ Per default il campo `_id` viene restituito sempre. Possiamo escluderlo in modo 
 Ad eccezione del campo `_id`, non è possibile mescolare inclusioni ed esclusioni. A ben vedere ciò ha senso, di solito vogliamo escludere oppure includere uno o più campi esplicitamente.
 
 ### Ordinamenti ###
-Abbiamo ripetuto più volte che `find` restituisce un cursore la cui esecuzione è ritardata finché questa non si rende veramente necessaria. Tuttavia avrete senz'altro notato che nella shell `find` viene eseguito immediatamente. Questo è un comportamento peculiare della shell. Possiamo osservare il vero comportamento dei `cursori` quando usiamo uno dei metodi che è possibile concatenare a `find`. Il primo che prendiamo in esame è `sort`. `sort` funziona in maniera simile al selettore di campo che abbiamo visto nella sezione precedente. Elenchiamo i campi da ordinare, usando 1 per ottenere un ordinamento crescente e -1 per un ordinamento discendente. Per esempio:
+Abbiamo ripetuto più volte che `find` restituisce un cursore la cui esecuzione è ritardata finché questa non si rende veramente necessaria. Tuttavia avrete senz'altro notato che nella shell `find` viene eseguito immediatamente. Questo è un comportamento peculiare della shell. Possiamo osservare il vero comportamento dei `cursori` quando usiamo uno dei metodi che è possibile concatenare a `find`. Il primo che prendiamo in esame è `sort`. `sort` funziona in maniera simile al selettore di campo che abbiamo visto nella sezione precedente. Elenchiamo i campi da ordinare, usando 1 per ottenere un ordinamento crescente e -1 per un ordinamento decrescente. Per esempio:
 
 	//gli unicorni più pesanti per primi:
 	db.unicorns.find().sort({weight: -1})
@@ -299,12 +299,12 @@ Usare `find` e i `cursori` è piuttosto semplice. Ci sono alcuni comandi aggiunt
 ## Capitolo 4 - Modellazione dei Dati ##
 Cambiamo marcia e passiamo a un argomento più astratto che riguarda MongoDB. Spiegare qualche nuovo termine e nuove sintassi è tutto sommato un compito banale; parlare della modellazione dei dati applicata a un nuovo paradigma quale è NoSQL è tutt'altra cosa. In realtà in fatto di modellazione dati applicata a queste nuove tecnologie tutti noi siamo ancora impegnati nel tentativo di scoprire cosa funziona e cosa no. Possiamo discuterne, ma in ultima analisi dovrete far pratica e imparare lavorando sul vero codice.
 
-In confronto alla gran parte delle soluzioni NoSQL i database orientati ai documenti sono probabilmente i meno differenti dai database relazionali. Le differenze sono sottili, ma questo non significa che non siano importanti.
+In confronto alla gran parte delle soluzioni NoSQL, i database orientati ai documenti sono probabilmente i meno differenti dai database relazionali. Le differenze sono sottili, ma questo non significa che non siano importanti.
 
 ### Niente Join ###
 La prima e fondamentale differenza alla quale dovrete abituarvi è l'assenza, in MongoDB, delle join. Non conosco la ragione precisa per cui almeno qualche tipo di join non sia supportato in MongoDB ma so che, in linea generale, le join sono considerate poco scalabili. Una volta che si comincia a suddividere orizzontalmente i dati si finirà prima o poi per lanciare le join lato client (l'application server). Al di là delle spiegazioni rimane il fatto che i dati *sono* relazionali, e che MongoDB non supporta le join.
 
-Per quel che sappiamo finora, sopravvirere in un mondo senza join significa eseguirle via codice nella nostra applicazione. In pratica dobbiamo lanciare una seconda query per trovare (`find`) i dati coerenti alla nostra ricerca. Impostare la ricerca non è diverso dal dichiarare una chiave esterna in un database relazionale. Lasciamo da parte i meravigliosi unicorni e passiamo agli impiegati (`employees`). La prima cosa che facciamo è creare un impiegato (al fine di costruire esempi coerenti userò un `_id` esplicito)
+Per quel che sappiamo finora, sopravvivere in un mondo senza join significa eseguirle via codice nella nostra applicazione. In pratica dobbiamo lanciare una seconda query per trovare (`find`) i dati coerenti alla nostra ricerca. Impostare la ricerca non è diverso dal dichiarare una chiave esterna in un database relazionale. Lasciamo da parte i meravigliosi unicorni e passiamo agli impiegati (`employees`). La prima cosa che facciamo è creare un impiegato (al fine di costruire esempi coerenti userò un `_id` esplicito)
 
 	db.employees.insert({_id: ObjectId("4d85c7039ab0fd70a117d730"), name: 'Leto'})
 
@@ -340,7 +340,7 @@ Nel caso ve lo stiate chiedendo, i documenti incorporati possono essere cercati 
 
 	db.employees.find({'family.mother': 'Chani'})
 
-Tratteremo brevemente il ruolo dei documenti incorporati e l'uso che se ne drovrebbe fare.
+Tratteremo brevemente il ruolo dei documenti incorporati e l'uso che se ne dovrebbe fare.
 
 #### DBRef ####
 MongoDB supporta un aggeggio noto chiamato `DBRef`, che altro non è che una convenzione supportata da molti driver. Quando un driver incontra un `DBRef` può richiamare automaticamente il documento referenziato. Un `DBRef` include il nome della collezione e l'id del documento a cui fa riferimento. Di solito si usa in un caso specifico: quando documenti dalla stessa collezione possono far riferimento a documenti che appartengono a collezioni diverse l'una dall'altra. Per esempio il `DBRef` di documento1 potrebbe puntare a un documento contenuto in `managers`, mentre quello di documento2 potrebbe puntare a un documento in `employees`.
@@ -354,16 +354,16 @@ Per esempio immaginate di essere al lavoro su un forum. Il modo tradizionale di 
 Per alcuni di noi adattarsi a questo tipo di approccio non sarà una passeggiata. In molti casi non avrà effettivamente senso. Tuttavia non abbiate timore di sperimentarlo. Non solo è adattabile a diverse circostanze, ma addirittura potrebbe risultare la cosa giusta da fare.
 
 #### Quale Scegliere? ####
-Gli arrray di id sono sempre una strategia utile quando abbiamo a che fare con scenari uno-a-molti o molti-a-molti. E' probabilmente il caso di ammettere che i `DBRef` non sono usati di frequente, ma se siete senz'altro liberi giocarci un pò. I nuovi sviluppatori si domandano spesso cosa sia meglio tra documenti incorporati e riferimenti manuali.
+Gli array di id sono sempre una strategia utile quando abbiamo a che fare con scenari uno-a-molti o molti-a-molti. E' probabilmente il caso di ammettere che i `DBRef` non sono usati di frequente, ma se siete senz'altro liberi giocarci un pò. I nuovi sviluppatori si domandano spesso cosa sia meglio tra documenti incorporati e riferimenti manuali.
 
-Prima di tutto sappiate che al momento i singoli documenti hanno un limite a 16 megabyte. Sapere che c'è un limite alla dimensione dei documenti, benché piuttosto ampio, aiuta a farsi unaa idea di bisognerebbe usarli. Al momento pare che gran parte dei programmatori ricorra pesantemente ai riferimenti diretti per la maggioranza delle relazioni. I documenti incorporati sono molto usati, ma per blocchi di dati relativamente piccoli, che si vogliono sempre richiamare col documento principale. Un esempio reale che ho usato in passato è il salvataggio di un documento `accounts` per ogni utente, qualcosa tipo:
+Prima di tutto sappiate che al momento i singoli documenti hanno un limite a 16 megabyte. Sapere che c'è un limite alla dimensione dei documenti, benché piuttosto ampio, aiuta a farsi una idea di come bisognerebbe usarli. Al momento pare che gran parte dei programmatori ricorra pesantemente ai riferimenti diretti per la maggioranza delle relazioni. I documenti incorporati sono molto usati, ma per blocchi di dati relativamente piccoli, che si vogliono sempre richiamare col documento principale. Un esempio reale che ho usato in passato è il salvataggio di un documento `accounts` per ogni utente, qualcosa tipo:
 
 	db.users.insert({name: 'leto', email: 'leto@dune.gov', account: {allowed_gholas: 5, spice_ration: 10}})
 
 Questo non significa che dovreste sottovalutare la potenza dei documenti incorporati, o derubricarli a utility di importanza secondaria. Avere un modello dati mappato direttamente sugli oggetti rende tutto molto semplice e spesso elimina la necessità di join, il che è particolarmente vero visto che MongoDB permette ricerche e indicizzazioni sui campi di un documento incorporato.
 
 ### Poche o Tante Collezioni ###
-Dato che le collezioni non sono obbligano a schema obbligato è ovviamente possibile concepire un sistema con una sola collezione contenente oggetti di ogni tipo. Per quanto ho visto io la maggior parte dei sistemi MongoDB è disposto in maniera simile a quella che troviamo in un sistema relazionale. In altre parole se in un database relazione ci vorrebbe una tabella, allora è probabile in MongoDB che ci voglia una collezione (in questo caso le tabelle per relazioni molti-a-molti sono una importante eccezione).
+Dato che le collezioni non impongono alcun schema è ovviamente possibile concepire un sistema con una sola collezione contenente oggetti di ogni tipo. Per quanto ho visto io la maggior parte dei sistemi MongoDB è disposto in maniera simile a quella che troviamo in un sistema relazionale. In altre parole se in un database relazione ci vorrebbe una tabella, allora è probabile in MongoDB che ci voglia una collezione (in questo caso le tabelle per relazioni molti-a-molti sono una importante eccezione).
 
 La faccenda si fa ancor più interessante prendendo in considerazione i documenti incorporati. L'esempio più usato è il blog. Dovremmo avere una collezione `posts` e una collezione `comments`, oppure dovremmo far si che ogni `post` abbia una array di `comments` incorporati? Lasciando da parte il limite dei 16MB (tutto l'Amleto è meno di 200KB, quanto è famoso il vostro blog?) la maggior parte degli sviluppatori preferiscono separare le cose. E' semplicemente più limpido ed esplicito.
 
@@ -393,9 +393,9 @@ Per quanto mi riguarda il vero vantaggio del design schema-less è l'assenza di 
 Vedetela dal punto di vista di uno sviluppatore di driver. Vuoi salvare un oggetto? Serializzalo in JSON (tecnicamente si tratta di BSON, ma poco cambia) e invialo a MongoDB. Non c'è mappatura delle proprietà, o dei tipi di dato. Questa immediatezza si riflette direttamente su di noi, gli sviluppatori finali.
 
 ### Scritture ###
-Un'area in cui MongoDB può volgere un ruolo peculiare è il logging. Ci sono due fattori che rendono le scritture in MongoDB piuttosto veloci. Primo, possiamo dare un comando di scrittura e vederlo ritornare senza aspettare che sia effettivamente avvenuta. Secondo, con l'introduzione del journaling nella versione 1.8 e i miglioramenti fatti nella 2.0 possiamo controllare il comportamento delle write per quanto riguarda la durabilità dei dati. Queste impostazioni, in aggiunta all'indicazione di quanti server devono ricevere i dati prima che una scrittura sia considerata sicura, sono conigurabili per ogni write, il che ci garantisce un ottimo controllo sulla performance. 
+Un'area in cui MongoDB può svolgere un ruolo peculiare è il logging. Ci sono due fattori che rendono le scritture in MongoDB piuttosto veloci. Primo, possiamo dare un comando di scrittura e vederlo ritornare senza aspettare che sia effettivamente avvenuta. Secondo, con l'introduzione del journaling nella versione 1.8 e i miglioramenti fatti nella 2.0 possiamo controllare il comportamento delle write per quanto riguarda la durabilità dei dati. Queste impostazioni, in aggiunta all'indicazione di quanti server devono ricevere i dati prima che una scrittura sia considerata sicura, sono configurabili per ogni write, il che ci garantisce un ottimo controllo sulle performance. 
 
-In aggiunta alla performance, il log è uno di quei tipi di dato che può avvantaggiarsi delle collezioni senza schema. Infine, MongoDB è dotato delle [collezioni limitate](http://www.mongodb.org/display/DOCS/Capped+Collections). Finora tutte quelle create erano collezioni normali. Possiamo creare una collezione limitata passando il parametro `capped` al comando `db.createCollection`:
+In aggiunta alle performance, il log è uno di quei tipi di dato che può avvantaggiarsi delle collezioni senza schema. Infine, MongoDB è dotato delle [collezioni limitate](http://www.mongodb.org/display/DOCS/Capped+Collections). Finora tutte quelle create erano collezioni normali. Possiamo creare una collezione limitata passando il parametro `capped` al comando `db.createCollection`:
 
 	//limitiamo la nostra collezione alla dimensione massima di 1 megabyte 
 	db.createCollection('logs', {capped: true, size: 1048576})
@@ -407,9 +407,9 @@ Questo è un buon momento per dirvi che per sapere se la vostra write è andata 
 ### Affidabilità ###
 Fino alla versione 1.8 MongoDB non era molto affidabile su server singolo. Ciò significa che un crash sul server avrebbe condotto probabilmente a una perdita di dati. La soluzione è sempre stata quella di eseguire MongoDB in configurazione multi-server (Mongo supporta la replication). Una delle più importanti novità introdotte con la versione 1.8 è il journaling. Per attivarlo basta aggiungere una nuova linea con `journal=true` al file `mongodb.config`, quello che abbiamo creato quando abbiamo configurato MongoDB la prima volta (è necessario riavviare il server se vogliamo attivare subito il journaling). Probabilmente vale sempre la pena di attivare il journaling (sarà attivo di default in una delle prossime versioni di MongoDB). A volte tuttavia potrebbe valer la pena di sacrificare il journaling in cambio dell'aumento di prestazioni (alcuni tipi di applicazioni possono accettare il rischio di perdita dati). 
 
-In passato si è discusso molto della mancanza in MongoDB del supporto per la durabilità sul singolo server. E' probabile che queste discussioni salteranno fuorsi su Google ancora per parecchio tempo, ma sappiate che si tratta, semplicemente, di informazioni non obsolete.
+In passato si è discusso molto della mancanza in MongoDB del supporto per la durabilità sul singolo server. E' probabile che queste discussioni salteranno fuori su Google ancora per parecchio tempo, ma sappiate che si tratta, semplicemente, di informazioni non obsolete.
 
-### Rircerca Full-Text ###
+### Ricerca Full-Text ###
 Speriamo che la ricerca full text arrivi con una dei prossimi aggiornamenti di MongoDB. Grazie al supporto per gli array è piuttosto facile implementare una ricerca full text di base. Per ottenere qualcosa di più potente ci dovremo rivolgere a soluzioni tipo Lucene/Solr. Naturalmente, questo vale anche per molti database relazionali.
 
 ### Transazioni ###
@@ -417,20 +417,20 @@ MongoDB non supporta le transazioni. Offre due alternative, una delle quali è o
 
 La prima corrisponde alle sue molte operazioni atomiche. Sono eccellenti, fintanto che riescono a risolvere il nostro problema. Abbiamo già visto alcune delle più semplici, come `$inc` e  `$set`. Sono disponibili anche comandi come `findAndModify`, che aggiorna o cancella un documento e lo restituisce atomicamente.
 
-La seconda soluzione, da usare quando le operazioni atomiche non sono sufficienti, consiste nel ripiegare su una commit in due fasi. Una commit in due fasi è l'equivalente, per le transazioni, della deferenzazione per le join. Si tratta di una implementare la soluzione nel proprio codice, indipendentemente dalla base dati. In realtà le commit a due fasi sono piuttoto diffuse nel mondo dei database relazionali, nel quale vengono usate per implementare transazioni multi-database. Il sito di MongoDB [propone un esempio](http://www.mongodb.org/display/DOCS/two-phase+commit) di uno scenario tipico, un trasferimento di fondi. L'idea di fondo è che lo stato della transazione venga archiviato col documento stesso, e che si proceda manualmente alle varie fasi init-pending-commit/rollback.
+La seconda soluzione, da usare quando le operazioni atomiche non sono sufficienti, consiste nel ripiegare su una commit in due fasi. Una commit in due fasi è l'equivalente, per le transazioni, della dereferenzazione per le join. Si tratta di implementare la soluzione nel proprio codice, indipendentemente dalla base dati. In realtà le commit a due fasi sono piuttoto diffuse nel mondo dei database relazionali, nel quale vengono usate per implementare transazioni multi-database. Il sito di MongoDB [propone un esempio](http://www.mongodb.org/display/DOCS/two-phase+commit) di uno scenario tipico, un trasferimento di fondi. L'idea di fondo è che lo stato della transazione venga archiviato col documento stesso, e che si proceda manualmente alle varie fasi init-pending-commit/rollback.
 
 Il supporto di MongoDB per documenti nidificati e design schema-less rende meno impegnative le commit in due fasi, ma senz'altro non si tratta di una procedura comoda, specialmente se siamo alle prime armi.
 
 ### Elaborazione Dati ###
 MongoDB si affida a MapReduce per la gran parte dei compiti di elaborazione. E' dotato di alcune capacità di [aggregazione di base](http://www.mongodb.org/display/DOCS/Aggregation), ma per qualcosa di serio dovrete senz'altro ricorrere a MapReduce. Nel prossimo capitolo vedremo MapReduce in dettaglio. Per il momento possiamo limitarci a considerarlo una tecnica diversa e molto potente per eseguire dei `group by` (stiamo semplificando). Uno dei punti di forza di MapReduce è che quando servono elaborazioni su grandi quantità di dati è possibile lanciarlo in parallelo. Tuttavia l'implementazione di MongoDB si affida a JavaScript, che è single-threaded. Dunque? Per elaborare una grande mole di dati ci sarà bisogno di rivolgersi a qualcos'altro, come Hadoop. Per fortuna i due sistemi si complementano a vicenda, ed esiste un [adapter MongoDB per Hadoop](https://github.com/mongodb/mongo-hadoop). 
 
-Naturalmente, l'elaborazione parallela dei dati non è un campo in cui i database relazionali sono particolarmente brillanti. In una della future versioni di MongoDB è comunque prevista una gestione migliore dei grandi dati.
+Naturalmente, l'elaborazione parallela dei dati non è un campo in cui i database relazionali sono particolarmente brillanti. In una della future versioni di MongoDB è comunque prevista una gestione migliore dei big data.
 
 ### Geospazialità ###
-Una caratteristica particolarmente potente di MongoDB è il suo supporto per gli indici geospaziali. Consente di archiviare coordinate x e y nei documenti, e in seguito di cercare documenti che sono `$near` (vicini) un set di coordinate, o `$within` (contenuti) in un rettangolo oppure un cerchio. E' una caratteristica più facile da comprendere visivamente, pertanto vi invito a provare il [tutorial geospaziale interattivo di 5 minuti](http://mongly.com/geo/index) se volete saperne di più.
+Una caratteristica particolarmente potente di MongoDB è il suo supporto per gli indici geospaziali. Consente di archiviare coordinate x e y nei documenti, e in seguito di cercare documenti che sono `$near` (vicini) un set di coordinate, o `$within` (contenuti) in un rettangolo oppure un cerchio. E' una caratteristica più facile da comprendere visivamente, pertanto vi invito a provare il [tutorial geospaziale interattivo di 5 minuti](http://tutorial.mongly.com/geo/index) se volete saperne di più.
 
 ### Strumenti e Maturità ###
-Probabilmente lo sapete già, ma MongoDB è ovviamente più giovane della maggior parte dei database relazionali. Questo è fattore da considerare con attenzione. Quanto, dipende da cosa state facendo e da come lo state facendo. In ogni caso e semplicemente, un ragionamento serio non può ignorare il fatto che MongoDB è più giovane, e che gli strumenti a disposizione non sono fantastici (anche se bisogna dire che gli strumenti a disposizione di molti database relazionali maturi sono anch'essi terribili!). Per esempio, la mancanza di supporto per i numeri a virgola mobile in base 10 si rivelerà senz'altro un grattacapo (ma non necessariamente la fine de giochi) per i sistemi che devono gestire del denaro.
+Probabilmente lo sapete già, ma MongoDB è ovviamente più giovane della maggior parte dei database relazionali. Questo è fattore da considerare con attenzione. Quanto, dipende da cosa state facendo e da come lo state facendo. In ogni caso e semplicemente, un ragionamento serio non può ignorare il fatto che MongoDB è più giovane, e che gli strumenti a disposizione non sono fantastici (anche se bisogna dire che gli strumenti a disposizione di molti database relazionali maturi sono anch'essi terribili!). Per esempio, la mancanza di supporto per i numeri a virgola mobile in base 10 si rivelerà senz'altro un grattacapo (ma non necessariamente la fine dei giochi) per i sistemi che devono gestire del denaro.
 
 Di buono c'è che esistono driver per molti linguaggi, che il protocollo è moderno e semplice, e che lo sviluppo avviene a grandissima velocità. MongoDB è usato in produzione da un numero tale di aziende che le preoccupazioni sulla sua maturità, pur valide, stanno rapidamente diventando una cosa del passato.
 
@@ -440,14 +440,14 @@ Il messaggio da cogliere da questo capitolo è che nella maggior parte dei casi 
 \clearpage
 
 ## Capitolo 6 - MapReduce ##
-MapReduce è un approccio all'elaborazione dati che vanta due vantaggi significativi rispetto alle altre soluzioni tradizionali. Il primo, e più importante, è la performance. In linea teorica MapReduce può operare in parallelo elaborando grandi set di dati contemporaneamente su più cores/CPU/computers. Come abbiamo già visto però, attualmente MongoDB non è in grado di sfruttare pienamento questo aspetto. Rispetto a quel che è possibile fare con SQL, il codice di MapReduce è infinitamente più ricco e ci permette di spingerci molto avanti prima che una soluzione ancor più specializzata si renda necessaria.
+MapReduce è un approccio all'elaborazione dati che vanta due vantaggi significativi rispetto alle altre soluzioni tradizionali. Il primo, e più importante, sono le performance. In linea teorica MapReduce può operare in parallelo elaborando grandi set di dati contemporaneamente su più core/CPU/computer. Come abbiamo già visto, però, attualmente MongoDB non è in grado di sfruttare pienamente questo aspetto. Rispetto a quel che è possibile fare con SQL, il codice di MapReduce è infinitamente più ricco e ci permette di spingerci molto avanti prima che una soluzione ancor più specializzata si renda necessaria.
 
 La popolarità del modello MapReduce è cresciuta molto, ed è ora possibile usarlo praticamente ovunque; C#, Ruby, Java, Python e così via, tutti ne offrono una implementazione. Vi avverto, all'inizio MapReduce sembrerà molto diverso da ciò a cui siete abituati, e piuttosto complicato. Non demoralizzatevi, prendetevi il tempo di sperimentare voi stessi. Vale la pena comprendere MapReduce a prescindere dal fatto che lo usiate con MongoDB o meno.
 
 ### Teoria e Pratica ###
 MapReduce è un processo in due fasi. Prima si mappa (map) e poi si riduce (reduce). Il mapping trasforma i documenti del flusso di input emettendo una coppia chiave=>valore (chiave e valore possono essere complessi). La reduce prende la chiave e l'array di valori ad essa abbinati e li usa per produrre il risultato finale. Affronteremo entrambe le fasi vedendo l'output di ognuna.
 
-L'esempio che useremo è la generazione di un report col numero di viste (hits) giornaliere che otteniamo per una data risorsa (diciamo una pagina web). E' il *hello world* del MapReduce. Per raggiungere il nostro scopo ci affideremo a una collezione `hits` che conterrà due campi: `resource` (risorsa) e `date`. L'output che vogliamo ottenere è un elenco con le seguenti colonne:  `resource`, `year`, `month`, `day` e `count`.
+L'esempio che useremo è la generazione di un report col numero di viste (hits) giornaliere che otteniamo per una data risorsa (diciamo una pagina web). E' lo *hello world* del MapReduce. Per raggiungere il nostro scopo ci affideremo a una collezione `hits` che conterrà due campi: `resource` (risorsa) e `date`. L'output che vogliamo ottenere è un elenco con le seguenti colonne:  `resource`, `year`, `month`, `day` e `count`.
 
 Dati i seguenti contenuti di `hits`:
 
@@ -476,7 +476,7 @@ La cosa bella di questo tipo di approccio  è che, salvando l'output, i report s
 
 Per il momento concentriamoci sul concetto. Alla fine di questo capitolo vi fornirò dati e codice di esempio da usare per fare esperimenti per conto vostro.
 
-Per prima cosa affrontiamo la funzione map. L'obiettivo della map è emettere un valore che può essere ridotto. E' possibile che map emetta 0 o piu risultati. Nel nostro caso emetterà un solo risultato (cosa che capita spesso). Immaginiamo la map come un ciclo che scorre i documenti della collezione hits. Per ogni documento vogliamo emettere una chiave con resource, year, month e day, ed un semplice valore 1:
+Per prima cosa affrontiamo la funzione map. L'obiettivo della map è emettere un valore che può essere ridotto. E' possibile che map emetta 0 o più risultati. Nel nostro caso emetterà un solo risultato (cosa che capita spesso). Immaginiamo la map come un ciclo che scorre i documenti della collezione hits. Per ogni documento vogliamo emettere una chiave con resource, year, month e day, ed un semplice valore 1:
 
 	function() {
 		var key = {
@@ -498,7 +498,7 @@ Per prima cosa affrontiamo la funzione map. L'obiettivo della map è emettere un
 
 Capire questo passagio intermedio è la chiave per comprendere MapReduce. I valori della emit sono raggruppati, in forma di array, per ogni chiave. Gli sviluppatori .NET e Java possono immaginare che si tratti di qualcosa del tipo: `IDictionary<object, IList<object>>` (.NET) oppure `HashMap<Object, ArrayList>` (Java).
 
-Cambiamo la nosta map function in modo piuttosto artificioso:
+Cambiamo la nostra map function in modo piuttosto artificioso:
 
 	function() {
 		var key = {resource: this.resource, year: this.date.getFullYear(), month: this.date.getMonth(), day: this.date.getDate()};
@@ -585,7 +585,7 @@ Ora possiamo lanciare il comando `mapReduce` sulla nostra collezione `hits`:
 
 	db.hits.mapReduce(map, reduce, {out: {inline:1}})
 
-Eseguendo il comando qui sopra dovreste ottenere il risultato desiderato. Impostare `out` a `inline` comporta che l'output di `mapReduce` ci venga immediatamente restituito. Attualmente c'è un limite a 16 megabyte o meno per gli output di questo tipo. Potremmo invece specificare `{out: 'hit_stats'}` per inviare i risultati alla nuova collezione `hit_statis`:
+Eseguendo il comando qui sopra dovreste ottenere il risultato desiderato. Impostare `out` a `inline` comporta che l'output di `mapReduce` ci venga immediatamente restituito. Attualmente c'è un limite a 16 megabyte o meno per gli output di questo tipo. Potremmo invece specificare `{out: 'hit_stats'}` per inviare i risultati alla nuova collezione `hit_stats`:
 
 	db.hits.mapReduce(map, reduce, {out: 'hit_stats'});
 	db.hit_stats.find();
@@ -595,12 +595,12 @@ Facendo questo eventuali dati esistenti in `hit_stats` andranno perduti. Se face
 Il terzo parametro accetta opzioni aggiuntive, potremmo per esempio filtrare, ordinare e limitare i documenti che vogliamo analizzare. Possiamo inoltre fornire un metodo `finalize` da applciare ai risultati successivamente alla fase `reduce`.
 
 ### Riepilogo ###
-Questo è il primo capitolo in cui abbiamo affrontato qualcosa di veramente diverso dal solito. Se vi siete trovati a disagio, tenete presente che potete sempre ricorrere alle altre [capacità di aggregazione](http://www.mongodb.org/display/DOCS/Aggregation) offerte da MongoDB, adatte a scenari più semplici (. In fin dei conti MapReduce è una delle caratteristiche più accattivanti di MongoDB. La chiave per comprendere a fondo come scrivere le vostre funzioni di map e reduce è visualizzare e comprendere l'aspetto che i dati intermedi assumeranno all'uscita della `map`, pronti per passare alla `reduce`.
+Questo è il primo capitolo in cui abbiamo affrontato qualcosa di veramente diverso dal solito. Se vi siete trovati a disagio, tenete presente che potete sempre ricorrere alle altre [capacità di aggregazione](http://www.mongodb.org/display/DOCS/Aggregation) offerte da MongoDB, adatte a scenari più semplici. In fin dei conti MapReduce è una delle caratteristiche più accattivanti di MongoDB. La chiave per comprendere a fondo come scrivere le vostre funzioni di map e reduce è visualizzare e comprendere l'aspetto che i dati intermedi assumeranno all'uscita della `map`, pronti per passare alla `reduce`.
 
 \clearpage
 
 ## Chapter 7 - Performance e Strumenti ##
-In quest'ultimo capitolo tratteremo le questioni di performance e daremo una occhiata ad alcuni strumenti a disposizione degli sviluppatori MongoDB. Per ognuno degli argomenti esamineremo gli aspetti più importanti, senza scendere troppo in dettaglio.
+In quest'ultimo capitolo tratteremo le questioni di performance e daremo un'occhiata ad alcuni strumenti a disposizione degli sviluppatori MongoDB. Per ognuno degli argomenti esamineremo gli aspetti più importanti, senza scendere troppo nel dettaglio.
 
 ### Indici ###
 All'inizio del libro abbiamo incontrato la collezione speciale `system.indexes` che contiene informazioni su tutti gli indici del nostro database. Gli indici in MongoDB funzionano in maniera molto simile a quella dei database relazionali: migliorano le performance di ricerche e ordinamenti. Gli indici vengono creati con `ensureIndex`:
@@ -619,7 +619,7 @@ Gli indici possono venire creati su campi incorporati (ancora una volta ricorren
 
 	db.unicorns.ensureIndex({name: 1, vampires: -1});
 
-L'ordine dell'indice (1 per ascendente, -1 per descendente) non importa per gli indici singoli, ma può avere un impatto sugli indici compositi, quando si combinano condizioni condizioni di range (gamma) e ordinamenti.
+L'ordine dell'indice (1 per ascendente, -1 per discendente) non importa per gli indici singoli, ma può avere un impatto sugli indici compositi, quando si combinano condizioni di range (gamma) e ordinamenti.
 
 Maggiori informazioni sugli indici sono reperibili sulla [pagina sugli indici](http://www.mongodb.org/display/DOCS/Indexes) del sito ufficiale.
 
@@ -635,7 +635,7 @@ Se facciamo in modo che la nostra query ricorra a un indice scopriremo che è st
 	db.unicorns.find({name: 'Pilot'}).explain()
 
 ### Scritture 'Fire and Forget' ###
-Abbiamo già detto prima che, per default, le write in MongoDB sono del tipo fire-and-forget. Questo comporta un miglioramento delle performance al costo di un aumento del rischio di perdita dati in caso di crash. Un effetto interessante di questo tipo di approccio alla scrittura dati è che non viene restituito alcun errore quando una insert/update finisce per violare un vincolo di univocità. Per informarci sugli eventuali errori di scrittura dobbiamo chiamare esplicitamente il metodo `db.getLastError()` dopo una insert. Molti driver gestiscono astraggono questo dettaglio gestendolo internamente, e forniscono un metodo diretto per lanciare scritture *sicure* - spesso ricorrendo a un parametro extra. 
+Abbiamo già detto prima che, per default, le write in MongoDB sono del tipo fire-and-forget. Questo comporta un miglioramento delle performance al costo di un aumento del rischio di perdita dati in caso di crash. Un effetto interessante di questo tipo di approccio alla scrittura dati è che non viene restituito alcun errore quando una insert/update finisce per violare un vincolo di univocità. Per informarci sugli eventuali errori di scrittura dobbiamo chiamare esplicitamente il metodo `db.getLastError()` dopo una insert. Molti driver astraggono questo dettaglio gestendolo internamente, e forniscono un metodo diretto per lanciare scritture *sicure* - spesso ricorrendo a un parametro extra. 
 
 Sfortunamente la shell esegue automaticamente delle scritture sicure, pertanto non possiamo vedere facilmente questo comportamento in azione.
 
@@ -645,10 +645,10 @@ MongoDB supporta l'auto-sharding. Lo sharding è un approccio alla scalabilità 
 ### Replicazione ###
 La replicazione in MongoDB funziona in modo simile a quella dei database relazionali. Le scritture vengono inviate a un singolo server, il master, che in seguito si sincronizza con uno o più server, gli slave. Possiamo controllare se le letture possono avvenire o meno sugli slave, il che ci può aiutare a distribuire il carico di lavoro correndo però il rischio di leggere dati leggermente obsoleti. Se il master fallisce, uno slave può venir promosso al ruolo di master. Anche la replication è al di là degli scopi di questo libro.
 
-E' vero che la replication può migliorare la performance (distribuendo le letture), ma il suo scopo principale è migliorare l'affidabilità. Combinare replication e sharding è un approccio molto diffuso. Per esempio, ogni shard potrebbe essere configurato con un master e uno slave. (Tecnicamente ci sarà anche bisogno di un arbitro per decidere chi promuovere nel caso di due slave che tentano entrambi di diventare master. Ma un arbitro richiede poche risorse e può essere usato per più shard.)
+E' vero che la replication può migliorare le performance (distribuendo le letture), ma il suo scopo principale è migliorare l'affidabilità. Combinare replication e sharding è un approccio molto diffuso. Per esempio, ogni shard potrebbe essere configurato con un master e uno slave. (Tecnicamente ci sarà anche bisogno di un arbitro per decidere chi promuovere nel caso di due slave che tentano entrambi di diventare master. Ma un arbitro richiede poche risorse e può essere usato per più shard.)
 
 ### Statistiche ###
-Possiamo ottenere informazioni su un database digitando `db.stats()`. Gran parte delle informazioni riguardano le dimensioni del database. Possiamo anche ottenere informazini su una collezione, per esempio `unicorns`, digitando `db.unicorns.stats()`. Anche in questo caso le informazioni riguardano più che altro le dimensioni della nostra collezione.
+Possiamo ottenere informazioni su un database digitando `db.stats()`. Gran parte delle informazioni riguardano le dimensioni del database. Possiamo anche ottenere informazioni su una collezione, per esempio `unicorns`, digitando `db.unicorns.stats()`. Anche in questo caso le informazioni riguardano più che altro le dimensioni della nostra collezione.
 
 ### Intefaccia Web ###
 Tra le informazioni disponibili quando abbiamo lanciato MongoDB c'era un link a uno strumento amministrativo su web (potrebbe essere ancora visibile se fate scorrere la finestra di comando/terminale fino al punto in cui avete lanciato `mongod`). Lo strumento amministrativo è accessibile puntando il browser all'indirizzo <http://localhost:28017/>. Varrà la pena aggiungere `rest=true` al config e riavviare il processo `mongod`. L'interfaccia web fornisce molte informazioni sullo stato del server.
@@ -695,11 +695,11 @@ E un output CSV eseguendo:
 Tenete presente che `mongoexport` e `mongoimport` non sono sempre in grado di rappresentare i dati. Solo `mongodump` e `mongorestore` dovrebbero essere usati per ottenere dei veri backup.
 
 ### Riepilogo ###
-In questo capitolo abbiamo scoperto vari comandi, strumenti e alcuni dettagli relativi alle performance di MongoDB. Non abbiamo visto tutto, ci siamo limitati quelli usati più spesso. L'indicizzazione in MongoDB è simile a quella dei database relazionali, così come molti degli altri strumenti. In MongoDB, tuttavia, molti di questi strumenti sono davvero facili da usare.
+In questo capitolo abbiamo scoperto vari comandi, strumenti e alcuni dettagli relativi alle performance di MongoDB. Non abbiamo visto tutto, ci siamo limitati a quelli usati più spesso. L'indicizzazione in MongoDB è simile a quella dei database relazionali, così come molti degli altri strumenti. In MongoDB, tuttavia, molti di questi strumenti sono davvero facili da usare.
 
 \clearpage
 
 ## Conclusione ##
 Ora dovreste essere in possesso di informazioni sufficienti per usare MongoDB in un progetto reale. In MongoDB c'è più di quel che abbiamo trattato, ma giunti a questo punto la vostra priorità è mettere a frutto quel che avete imparato e acquisire familiarità col driver che userete. Il [sito MongoDB](http://www.mongodb.com/) è ricco di informazioni utili e il [MongoDB user group ufficiale](http://groups.google.com/group/mongodb-user) è il posto ideale dove porre le vostre domande.
 
-NoSQL è nato non solo per necessità ma anche dall'interesse genuino verso la sperimentazione di nuovi approcci. E' risaputo quanto il nostro settore sia in continua evoluzione e che, se non tentiamo, a volte anche fallendo, non otteremo alcun successo. Credo che questo sia un buon approccio per condurre la nostra vita professionale.
+NoSQL è nato non solo per necessità ma anche dall'interesse genuino verso la sperimentazione di nuovi approcci. E' risaputo quanto il nostro settore sia in continua evoluzione e che, se non tentiamo, a volte anche fallendo, non otterremo alcun successo. Credo che questo sia un buon approccio per condurre la nostra vita professionale.
