@@ -79,7 +79,7 @@ Potete lanciare `mongo` (senza la *d*), che connetterà la shell al vostro serve
 \clearpage
 
 ## Capitolo 1 - Le Basi ##
-Cominciamo il nostro viaggio dai meccanismi base di MongoDB. Ovviamente sono fondamentali per capire MongoDB, ma a un livello più generale ci aiuteranno a a rispondere alle nostre domande sul ruolo di MongoDB.
+Cominciamo il nostro viaggio dai meccanismi base di MongoDB. Ovviamente sono fondamentali per capire MongoDB, ma a un livello più generale ci aiuteranno a rispondere alle nostre domande sul ruolo di MongoDB.
 
 Per cominciare, ci sono sei semplici concetti che dobbiamo comprendere.
 
